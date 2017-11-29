@@ -4,47 +4,67 @@
         <link href="EventStyle.css" type="text/css" rel="stylesheet"/>
     </head>
     <body>
-        <div id="Container">
-            <header>
-                <img src="DragonEventsLogo.JPG" alt="DragonEvents Logo" height="125" width="250">
+	<div id="container">
+		<!-- Header -->
+		<header>
+			<!-- Logo -->
+            <div id= "logo">
+                <img src="DragonEventsLogo.JPG" alt="DragonEvents Logo" height="150" width="200">
                 <h1>Welcome to DragonEvents!</h1>
-                <ul class="nav">
-                    <li><a href="ProjectPrototype.html">Home</a></li>
-                    <li><a href="Events.html">Events</a></li>
-                    <li><a href="About.html">About Us</a></li>
-                    <li><a href="Login.html">Login</a></li>
+            </div>
+			<!-- Navigation -->
+			<nav>
+				<ul class= "nav"> 
+                    <li> <a href= "index.html">Home</a></li>
+                    <li> <a href= "event.html">Events</a></li>
+                    <li> <a href= "about.html">About us</a></li>
+                    <li> <a href= "login.html">Log in</a></li>
                 </ul>
-            </header>
+			</nav>
+		</header>
+        <div id="filter">
+            <input id="name_input" placeholder="Event Name"/>
+            <input id="start_date" placeholder="Start Date" type="date"/>
+            <input id="end_date" placeholder="End Date" type="date"/>
+            <ul>
+                <li><input class="tag" type="checkbox">Free</li>
+                <li><input class="tag" type="checkbox">Music</li>
+                <li><input class="tag" type="checkbox">Tag_3</li>
+                <li><input class="tag" type="checkbox">Tag_4</li>
+            </ul>            
         </div>
-        <div class="Events">
-            <h3>Event Name</h3>
-            <p>About the Events</p>
-            <p>Event Date and Tme</p>
+        <div id="EventContainer">
+            <div id="Events">
+                <h3>Event Name</h3>
+                <p>About the Events</p>
+                <p>Event Date and Tme</p>
+            </div>
+            <div id="Events">
+                <h3>Event Name</h3>
+                <p>About the Events</p>
+                <p>Event Date and Tme</p>
+            </div>
+            <div id="Events">
+                <h3>Event Name</h3>
+                <p>About the Events</p>
+                <p>Event Date and Tme</p>
+            </div>
+            <div id="Events">
+                <h3>Event Name</h3>
+                <p>About the Events</p>
+                <p>Event Date and Tme</p>
+            </div>
+            <div id="Events">
+                <h3>Event Name</h3>
+                <p>About the Events</p>
+                <p>Event Date and Tme</p>
+            </div>
+            <div id="Events">
+                <h3>Event Name</h3>
+                <p>About the Events</p>
+                <p>Event Date and Tme</p>
+            </div>
         </div>
-        <div class="Events">
-            <h3>Event Name</h3>
-            <p>About the Events</p>
-            <p>Event Date and Tme</p>
-        </div>
-        <div class="Events">
-            <h3>Event Name</h3>
-            <p>About the Events</p>
-            <p>Event Date and Tme</p>
-        </div>
-        <div class="Events">
-            <h3>Event Name</h3>
-            <p>About the Events</p>
-            <p>Event Date and Tme</p>
-        </div>
-        <div class="Events">
-            <h3>Event Name</h3>
-            <p>About the Events</p>
-            <p>Event Date and Tme</p>
-        </div>
-        <div class="Events">
-            <h3>Event Name</h3>
-            <p>About the Events</p>
-            <p>Event Date and Tme</p>
-        </div>
+    </div>
     </body>
 </html>
