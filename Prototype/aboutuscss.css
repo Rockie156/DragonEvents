@@ -1,19 +1,27 @@
 /*********************
    Header Style
 *********************/
-
-#container{
-    width: 960px;
-    margin: 0px auto;
-    padding: 0 15px;
+body{
+    font-family: cambria;
+    background-image: url(background3.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%
 }
 
+#container{
+    background-color: white;
+    width: 960px;
+    height: auto;
+    margin: 0px auto;
+    padding: 0 15px;}
+
 #container header{
-    padding: 0 0.8em;
+    padding: 0 0.5em;
     height: 90px;}
 
-#container h1{
+#container h2{
     font-family: cambria;
+    margin: 0.5em
 }
 
 
@@ -45,20 +53,21 @@ header nav ul li a:hover{
 
 li{
     display: inline;
-    margin: 10px;}
-#filter
-{
-    float: none;
-    padding: 10px;
+    margin: 12px;}
+
+/*********************
+   About Us
+*********************/
+#about {
+    font-family: cambria;
+    align-content: center;
     margin-top: 12em;
+    margin-left: 2em;
 }
-#Events
-{
-    float: left;
-    padding: 10px;
+
+#about p {
+    font-family: cambria;
+    font-size: 1em;
 }
-#EventContainer
-{
-    float: none;
-    width: 500px;
-}
+
+
