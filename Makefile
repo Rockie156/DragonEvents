@@ -3,13 +3,11 @@ error:
 
 setup:
 	sudo apt-get install emacs
-	@echo "sudo debconf-set-selections <<< 'mysql-server mysql-server/password password'"
-	@echo "sudo debconf-set-selections <<< 'mysql-server mysql-server/password password'"
-	sudo apt-get -y install mysql-server
-
-
+# "noninteractive" prevents any password prompts from mysql
+# -y automatically puts in 'yes' for any prompts
+	sudo apt-get install -y mysql-server
 backup:	
-	sudo mysqldump test -p > $(CURDIR)/Prototype/database/backup.sql
+	sudo mysqldump test > $(CURDIR)/Prototype/database/backup.sql
 
 restore:
-	sudo mysql -p test < $(CURDIR)/Prototype/database/backup.sql
+	sudo mysql test < $(CURDIR)/Prototype/database/backup.sql
