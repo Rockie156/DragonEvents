@@ -11,7 +11,7 @@
     padding: 0 0.8em;
     height: 90px;}
 
-#container h1{
+#container h2{
     font-family: cambria;
 }
 
@@ -46,3 +46,47 @@ li{
     display: inline;
     margin: 10px;}
 
+
+/*Main content*/
+{
+    background-image:url('background.jpg');}
+
+
+
+
+/*********************
+   Events
+*********************/
+
+
+
+
+
+
+
+
+
+
+
+
+/*********************
+   About Us
+*********************/
+#about {
+    font-family: cambria;
+}
+
+#about p {
+    font-size: 0.9em
+}
+
+
+
+
+
+
+
+
+/*********************
+   Log in
+*********************/
