@@ -2,7 +2,7 @@ error:
 	@echo "Please choose one of the following target: setup, backup, restore"
 
 setup:
-	sudo apt-get install emacs
+	sudo apt-get install -y emacs
 # "noninteractive" prevents any password prompts from mysql
 # -y automatically puts in 'yes' for any prompts
 	sudo apt-get install -y mysql-server
