@@ -11,7 +11,7 @@
     padding: 0 0.8em;
     height: 90px;}
 
-#container h1{
+#container h2{
     font-family: cambria;
 }
 
@@ -44,4 +44,53 @@ header nav ul li a:hover{
 
 li{
     display: inline;
+<<<<<<< HEAD
     margin: 10px;}
+=======
+    margin: 10px;}
+
+
+/*Main content*/
+{
+    background-image:url('background.jpg');}
+
+
+
+
+/*********************
+   Events
+*********************/
+
+
+
+
+
+
+
+
+
+
+
+
+/*********************
+   About Us
+*********************/
+#about {
+    font-family: cambria;
+}
+
+#about p {
+    font-size: 0.9em
+}
+
+
+
+
+
+
+
+
+/*********************
+   Log in
+*********************/
+>>>>>>> 5d7d6ab8b104e075e07911f9d7739d2e65121bca
