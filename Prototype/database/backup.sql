@@ -23,8 +23,12 @@ DROP TABLE IF EXISTS `event_tags`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `event_tags` (
-  `event_id` int(11) DEFAULT NULL,
-  `tag_id` int(11) DEFAULT NULL
+  `event_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL,
+  KEY `event_id` (`event_id`),
+  KEY `tag_id` (`tag_id`),
+  CONSTRAINT `event_tags_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`),
+  CONSTRAINT `event_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -34,6 +38,7 @@ CREATE TABLE `event_tags` (
 
 LOCK TABLES `event_tags` WRITE;
 /*!40000 ALTER TABLE `event_tags` DISABLE KEYS */;
+INSERT INTO `event_tags` VALUES (1,1),(1,2),(1,3);
 /*!40000 ALTER TABLE `event_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +67,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (2,'test event','2017-11-29 15:11:53','2017-11-29 15:11:53',1,NULL);
+INSERT INTO `events` VALUES (1,'Free Food and Music at Drexel!','2017-11-29 15:11:53','2017-11-29 15:11:53',1,'3141 Chestnut St, Philadelphia, PA 19104');
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,9 +81,8 @@ DROP TABLE IF EXISTS `tags`;
 CREATE TABLE `tags` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(64) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,6 +91,7 @@ CREATE TABLE `tags` (
 
 LOCK TABLES `tags` WRITE;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
+INSERT INTO `tags` VALUES (1,'Free'),(2,'Music'),(3,'Food');
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +108,7 @@ CREATE TABLE `users` (
   `last_name` varchar(64) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +117,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,NULL,NULL,'sh3292@drexel.edu');
+INSERT INTO `users` VALUES (1,'saffat','hasan','sh3292@drexel.edu'),(2,'Rahul','Godoba','rpg46@drexel.edu');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -125,4 +130,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-29 16:57:05
+-- Dump completed on 2017-11-29 17:20:22
