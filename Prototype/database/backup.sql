@@ -38,7 +38,7 @@ CREATE TABLE `event_tags` (
 
 LOCK TABLES `event_tags` WRITE;
 /*!40000 ALTER TABLE `event_tags` DISABLE KEYS */;
-INSERT INTO `event_tags` VALUES (1,1),(1,2),(1,3);
+INSERT INTO `event_tags` VALUES (1,1);
 /*!40000 ALTER TABLE `event_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,6 +70,27 @@ LOCK TABLES `events` WRITE;
 INSERT INTO `events` VALUES (1,'Free Food and Music at Drexel!','2017-11-29 15:11:53','2017-11-29 15:11:53',1,'3141 Chestnut St, Philadelphia, PA 19104');
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary table structure for view `events_vw`
+--
+
+DROP TABLE IF EXISTS `events_vw`;
+/*!50001 DROP VIEW IF EXISTS `events_vw`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `events_vw` (
+  `event_id` tinyint NOT NULL,
+  `name` tinyint NOT NULL,
+  `start_time` tinyint NOT NULL,
+  `end_time` tinyint NOT NULL,
+  `user_id` tinyint NOT NULL,
+  `location` tinyint NOT NULL,
+  `first_name` tinyint NOT NULL,
+  `last_name` tinyint NOT NULL,
+  `email` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `tags`
@@ -120,6 +141,25 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'saffat','hasan','sh3292@drexel.edu'),(2,'Rahul','Godoba','rpg46@drexel.edu');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `events_vw`
+--
+
+/*!50001 DROP TABLE IF EXISTS `events_vw`*/;
+/*!50001 DROP VIEW IF EXISTS `events_vw`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `events_vw` AS select `events`.`id` AS `event_id`,`events`.`name` AS `name`,`events`.`start_time` AS `start_time`,`events`.`end_time` AS `end_time`,`events`.`user_id` AS `user_id`,`events`.`location` AS `location`,`users`.`first_name` AS `first_name`,`users`.`last_name` AS `last_name`,`users`.`email` AS `email` from (`events` join `users` on((`users`.`id` = `events`.`user_id`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -130,4 +170,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-29 17:20:22
+-- Dump completed on 2017-11-30 15:35:46

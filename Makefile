@@ -1,4 +1,4 @@
-BSHELL:=/bin/bash
+SHELL:=/bin/bash
 
 error:
 	@echo "Please choose one of the following target: setup, backup, restore"
