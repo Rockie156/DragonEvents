@@ -1,15 +1,20 @@
 /*********************
    Header Style
 *********************/
+body{
+    background-image: linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25)),url(stringio.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 #container{
-    width: 960px;
-    margin: 0px auto;
-    padding: 0 15px;}
-
-#container header{
-    padding: 0 0.8em;
-    height: 90px;}
+    background-color: white;
+    width: 970px;
+    margin: 0px auto 10px;
+    padding: 0 15px 20em;
+    color: black;}
 
 #container h2{
     font-family: cambria;
@@ -46,20 +51,27 @@ li{
     display: inline;
     margin: 10px;}
 
-
-/*Main content*/
-{
-    background-image:url('background.jpg');}
-
-
-
-
 /*********************
    Events
 *********************/
 
 
-
+#filter
+{
+    float: none;
+    padding: 10px;
+    margin-top: 12em;
+}
+#Events
+{
+    float: left;
+    padding: 10px;
+}
+#EventContainer
+{
+    float: none;
+    width: 500px;
+}
 
 
 
@@ -74,19 +86,32 @@ li{
 *********************/
 #about {
     font-family: cambria;
+    align-content: center;
+    margin-top: 12em;
+    margin-left: 2em;
+    padding-bottom: 3em;
 }
 
 #about p {
-    font-size: 0.9em
+    font-family: cambria;
+    font-size: 1em;
 }
-
-
-
-
-
 
 
 
 /*********************
    Log in
 *********************/
+.loginPage p{
+    margin-top: 14em;
+}
+
+#form{
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    width: 175px;
+    margin: 0 auto 10px;
+    text-align: center;
+    padding-bottom: 10em;
+}
