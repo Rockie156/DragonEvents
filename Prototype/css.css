@@ -11,13 +11,15 @@ body{
 
 #container{
     background-color: white;
-    width: 970px;
-    margin: 0px auto 10px;
-    padding: 0 15px 20em;
-    color: black;}
+    width: 960px;
+    margin: 0px auto;
+    padding: 0 15px;}
 
-#container h2{
+#container header{
     font-family: cambria;
+    background-color: white;
+    padding: 0 0 11em;
+    height: 90px;}
 }
 
 
@@ -25,7 +27,7 @@ body{
    Nav Styles
 *********************/
 header nav{
-    float: left;}
+    float: right;}
 
 header nav ul{
     margin: 0;
@@ -52,19 +54,34 @@ li{
     margin: 10px;}
 
 /*********************
+   Main Page content
+*********************/
+#MainContent{
+    background-color: white;
+    padding-bottom: 20em;
+}
+
+#MainEvents
+{
+    float: left;
+    margin: 10px;
+    padding: 5px 40px 
+}
+
+/*********************
    Events
 *********************/
-
 
 #filter
 {
     float: none;
     padding: 10px;
-    margin-top: 12em;
+    margin-top: em;
 }
 #Events
 {
     float: left;
+    margin: 10px;
     padding: 10px;
 }
 #EventContainer
@@ -72,13 +89,6 @@ li{
     float: none;
     width: 500px;
 }
-
-
-
-
-
-
-
 
 
 /*********************
