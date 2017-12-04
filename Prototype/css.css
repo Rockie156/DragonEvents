@@ -58,12 +58,12 @@ li{
 *********************/
 #MainContent{
     background-color: white;
-    padding-bottom: 10em;
+    padding-bottom: 11em;
     padding-left: 2em;
 }
 
 #MainPage{
-    padding-bottom: 10em;
+    padding-bottom: 15em;
 }
 
 #MainEvents
@@ -133,5 +133,5 @@ li{
     width: 175px;
     margin: 0 auto 10px;
     text-align: center;
-    padding-bottom: 10em;
+    padding-bottom: 7em;
 }
