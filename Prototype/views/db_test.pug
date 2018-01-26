@@ -1,0 +1,10 @@
+p Test page for database connection. If you see this page, good job!
+
+p Here are fetched events from the database:
+
+table
+	thead
+		tr: td Event Name
+	tbody
+		each event_name in events
+			tr: td #{event_name}
