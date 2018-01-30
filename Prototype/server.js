@@ -1,42 +1,24 @@
 var http = require('http');
-var mysql = require('mysql');
 var fs = require('fs');
 var express = require('express');
 var pug = require('pug');
+var database = require('./firebase.js');
 
 app = express();
 app.set('view engine', 'pug');
 
-app.get('/test_db', function(req, res) {
-		var events = [];
-		var conn = get_connection();
-		conn.connect();
-		conn.query('SELECT name FROM events', function(err, rows, fields) {
-			if (err) {
-				res.status(500).json({"status_code": 500,"status_message": "internal server error"});
-			} else {
-				for (var i = 0; i < rows.length; i++) {
-					events.push(rows[i].name);
-				}
-			}
-			res.render('db_test', {"events":events});
-		});
-});
-
-function get_connection() {
-	return mysql.createConnection({
-		host: "localhost",
-		user: "root",
-		password: "1234",
-		database: "test"
+app.get('/test_firebase', function(req, res) {
+	var events = [];
+	var db = database.get_connection();
+	db.then(function(snapshot) {
+		console.log(snapshot.val().events);
+		res.render('db_test', {"events": snapshot.val().events});
 	});
-}
+});
 
 app.listen(7080, function () {
     console.log('listening on port', 7080);
 });
-
-
 
 http.createServer(function (req, res){
     if(req.url === '/index.html'){
