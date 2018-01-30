@@ -27,6 +27,24 @@ http.createServer(function (req, res){
             res.write(data);
             res.end();
         });
+    } else if(req.url === '/Events.html'){
+        fs.readFile('templates/Events.html',function(err,data) {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            res.end();
+        });
+    } else if(req.url === '/about.html'){
+        fs.readFile('templates/about.html',function(err,data) {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            res.end();
+        });
+    } else if(req.url === '/Login.html'){
+        fs.readFile('templates/Login.html',function(err,data) {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            res.end();
+        });
     } else if(req.url === '/index.css') {
         fs.readFile('css/index.css',function(err,data) {
             res.writeHead(200, {'Content-Type': "text/css"});
