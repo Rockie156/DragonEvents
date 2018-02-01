@@ -1,23 +1,25 @@
-#container{
-    width: 960px;
-    margin: 0px auto;
-    padding: 0 15px;}
 /*********************
    Header Style
 *********************/
-
-#container{
-    width: 960px;
-    margin: 0px auto;
-    padding: 0 15px 100px;
+body{
+    background-image: url("../img/stringio.jpg"), linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25));
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-#container header{
-    padding: 0 0.8em;
-    height: 90px;}
+#container{
+    background-color: white;
+    width: 960px;
+    margin: 0px auto;
+    padding: 0 15px;}
 
-#container h1{
+#container header{
     font-family: cambria;
+    background-color: white;
+    padding: 0 0 11em;
+    height: 90px;}
 }
 
 
@@ -25,7 +27,7 @@
    Nav Styles
 *********************/
 header nav{
-    float: left;}
+    float: right;}
 
 header nav ul{
     margin: 0;
@@ -43,13 +45,16 @@ header nav ul li a:visited{
     text-decoration: none;}
 
 header nav ul li a.active, 
-header nav ul li a.focus, 
+header nav ul li a:focus, 
 header nav ul li a:hover{
     color: green;}
 
 li{
     display: inline;
     margin: 10px;}
+
+/*****EVENT STYLE ****/
+
 #filter
 {
     float: none;
