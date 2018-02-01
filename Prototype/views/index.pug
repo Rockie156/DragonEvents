@@ -27,15 +27,9 @@ head
     #MainPage
       h3 Featured Events
       // Feature
-      #MainEvents
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
-      #MainEvents
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
-      #MainEvents
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
+      each event in events
+        #MainEvents
+          h3 #{event.name}
+          p #{event.desc}
+          p #{event.start}
+          p #{event.end}

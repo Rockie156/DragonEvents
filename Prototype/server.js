@@ -28,10 +28,11 @@ app.get('/', function(req, res) {
 	});
 });
 
-app.listen(80, function () {
-    console.log('listening on port', 80);
+app.listen(2080, function () {
+    console.log('listening on port', 2080);
 });
 
+/**
 http.createServer(function (req, res){
     if(req.url === '/index.html'){
         fs.readFile('templates/index.html',function(err,data) {
@@ -77,3 +78,4 @@ http.createServer(function (req, res){
 }).listen(8080, function() {
 	console.log('listening on port', 8080)
 });
+**/
