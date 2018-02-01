@@ -23,3 +23,16 @@ module.exports = {
 function get_connection() {
 		return db;
 }
+
+/** Create a new event in the database **/
+function create_event(eventName, eventDescription, eventStart, eventEnd, eventOwnedBy) {
+	var eventsRef = app.database().ref('events');
+	var newEventRef = eventsRef.push({
+		name: eventName,
+		desc: eventDescription,
+		start: eventStart,
+		end: eventEnd,
+		user: eventOwnedBy
+	});
+	return newEventRef;
+}

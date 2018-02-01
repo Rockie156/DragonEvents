@@ -4,16 +4,18 @@ var express = require('express');
 var pug = require('pug');
 var database = require('./firebase.js');
 require('express-session');
+var bodyParser = require('body-parser');
 
 app = express();
 app.set('view engine', 'pug');
 app.use(express.static('.'));
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 
 app.get('/test_firebase', function(req, res) {
 	var db = database.get_connection();
 	db.then(function(snapshot) {
-		console.log(snapshot.val().events);
 		res.render('db_test', {"events": snapshot.val().events});
 		res.end();
 	});
@@ -22,12 +24,16 @@ app.get('/test_firebase', function(req, res) {
 app.get('/', function(req, res) {
 	var db = database.get_connection();
 	db.then(function(snapshot) {
-		console.log(snapshot.val().events);
 		res.render('index', {"events": snapshot.val().events});
 		res.end();
 	});
 });
 
+app.post('/submit', function(req, res) {
+	console.log(req.body);
+	res.send('Coming soon...');
+});
+	
 app.listen(2080, function () {
     console.log('listening on port', 2080);
 });
