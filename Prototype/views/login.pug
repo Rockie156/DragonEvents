@@ -1,0 +1,34 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title DragonEvents
+  link(rel='stylesheet', type='text/css', href='../css/Login.css')
+// Page Container
+#container
+  // Header
+  header
+    // Logo
+    #logo
+      img(src='../img/DragonEventsLogo.JPG', alt='DragonEvents Logo', height='150', width='200')
+      h2 Welcome to DragonEvents!
+    // Navigation
+    nav
+      ul.nav
+        li
+          a(href='index.html') Home
+        li
+          a(href='Events.html') Events
+        li
+          a(href='about.html') About us
+        li
+          a(href='Login.html') Log in
+  #MainContent
+    .loginPage
+      p(align='center') Please login using a verrified email adress and password. 
+    #form
+      input(type='text', placeholder='User Email')
+      input(type='text', placeholder='Password')
+      button Login
+      button Register
+      p
+        | Don&apos;t have an account? Register for one above.
