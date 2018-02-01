@@ -53,20 +53,30 @@ li{
     display: inline;
     margin: 10px;}
 
-/*****EVENT STYLE ****/
+/*********************
+   Events
+*********************/
+#MainContent #EventPage
+{
+    background-color: white;
+    padding-bottom: 22em;
+}
 
 #filter
 {
+    background-color: white;
     float: none;
     padding: 10px;
-    margin-top: 12em;
+    margin-top: 1em;
 }
+
 #Events
 {
     float: left;
     margin: 10px;
     padding: 10px;
 }
+
 #EventContainer
 {
     float: none;
