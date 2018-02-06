@@ -6,19 +6,32 @@
   crossorigin="anonymous"></script>
 		<script>
 		function submitForm() {
+            var dictionary= {
+                "name": $('#name').val(),
+                "description":$('#description').val(),
+                "start_date":$('#start_date').val(),
+                "end_date":$('#end_date').val(),
+                "location":$('#location').val(),
+                "event_type":$('#event_type').val(),
+            };
+            console.log (dictionary);
 			$.ajax({
 				url: "./submit",
 				type: "POST",
 				dataType: "text",
-				data: { 'name':$('#name').val() },
+                   data: dictionary
+
 			});
 }
 		</script>
 	</head>
 	<body>
 		<input id='name'/>
-		<button type=submit onclick='submitForm()'>Submit</button>
-		<div id='current'/>
-		<div id="div1"/>
-	</body>
+        <input id='description'/>
+        <input id='start_date'/>
+        <input id='end_date'/>
+        <input id='location '/>
+        <input id='event_type'/>
+        <button type=submit onclick='submitForm()'>Submit</button>
+    </body>
 </html>
