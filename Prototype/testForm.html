@@ -26,12 +26,13 @@
 		</script>
 	</head>
 	<body>
-		<input id='name'/>
-        <input id='description'/>
-        <input id='start_date'/>
-        <input id='end_date'/>
-        <input id='location '/>
-        <input id='event_type'/>
+        <h1> DragonEvent Submission</h1>
+        <p>Event Title:</p><input id='name' size="35" maxlength="75"/ ><br>
+        <p>Description:</p><input id='description' size="50" style="height:100px"/><br>
+        <p>Start Date : <input id='start_date' type="date" style="margin-right: 30px"/>
+            End Date   : <input id='end_date'type="date"/></p>
+        <p>Location   :</p><input id='location' size="35"/><br>
+        <p>Event Type :</p><input id='event_type' size="35"/><br><br>
         <button type=submit onclick='submitForm()'>Submit</button>
     </body>
 </html>
