@@ -1,42 +1,39 @@
 doctype html
-head
-  meta(charset='utf-8')
-  title DragonEvents
-  link(rel='stylesheet', type='text/css', href='../css/index.css')
-// Page Container
-#container
-  // Header
-  header
-    // Logo
-    #logo
-      a(href='../templates/index.html')
-        img(src='../img/DragonEventsLogo.JPG', alt='DragonEvents Logo', height='150', width='200')
-      h2 Welcome to DragonEvents!
-    // Navigation
-    nav
-      ul.nav
-        li
-          a(href='../templates/index.html') Home
-        li
-          a(href='../templates/Events.html') Events
-        li
-          a(href='../templates/about.html') About us
-        li
-          a(href='../templates/Login.html') Log in
-  // Main Content
-  #MainContent
-    #MainPage
-      h3 Featured Events
-      // Feature
-      #MainEvents
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
-      #MainEvents
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
-      #MainEvents
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title DragonEvents
+    link(rel='stylesheet', type='text/css', href='/css/index.css')
+  body
+    // Page Container
+    #container
+      // Header
+      header
+        // Logo
+        #logo
+          a(href='../templates/index.html')
+            img(src='img/DragonEventsLogo.JPG', alt='DragonEvents Logo', height='150', width='200')
+          h2 Welcome to DragonEvents!
+        // Navigation
+        nav
+          ul.nav
+            li
+              a(href='index.html') Home
+            li
+              a(href='Events.html') Events
+            li
+              a(href='about.html') About us
+            li
+              a(href='Login.html') Log in
+      // Main Content
+      #MainContent
+        #MainPage
+          h3 Featured Events
+          // Feature
+          each event in events
+            #MainEvents
+            h3 #{event.name}
+            p #{event.description}
+            p Start Time: #{event.start}
+            p End Time: #{event.end}
+            p Location: #{event.location}
