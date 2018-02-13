@@ -66,8 +66,14 @@ li{
  
 #Events
 {
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 3px;
+}
+
+#EventList
+{
+    overflow: scroll;
+    margin-left: 30px;
 }
 
 #Submit

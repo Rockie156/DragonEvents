@@ -9,7 +9,8 @@ head
   header
     // Logo
     #logo
-      img(src='../img/DragonEventsLogo.JPG', alt='DragonEvents Logo', height='150', width='200')
+      a(href='../templates/index.html')
+        img(src='../img/DragonEventsLogo.JPG', alt='DragonEvents Logo', height='150', width='200')
       h2 Welcome to DragonEvents!
     // Navigation
     nav
@@ -27,9 +28,15 @@ head
     #MainPage
       h3 Featured Events
       // Feature
-      each event in events
-        #MainEvents
-          h3 #{event.name}
-          p #{event.desc}
-          p #{event.start}
-          p #{event.end}
+      #MainEvents
+        h3 Event Name
+        p About the Events
+        p Event Date and Tme
+      #MainEvents
+        h3 Event Name
+        p About the Events
+        p Event Date and Tme
+      #MainEvents
+        h3 Event Name
+        p About the Events
+        p Event Date and Tme
