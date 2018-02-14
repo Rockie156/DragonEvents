@@ -20,81 +20,19 @@
 				type: "POST",
 				dataType: "text",
                    data: dictionary
+
 			});
 }
 		</script>
-        </head>
-        <style> 
-            body{
-                background-image: url("../img/stringio.jpg"), linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25));
-                height: 100vh;
-                background-size: cover;
-                background-position: center;
-                background-repeat: repeat;
-                font-family: cambria;
-                }
-            #submission{text-align: center;}
-            #container{
-                background-color: white;
-                width: 960px;
-                height: auto;
-                margin: 0px auto;
-                padding: 20px;}
-            #container header{
-                font-family: cambria;
-                background-color: white;
-                padding: 0 0 11em;
-                height: 90px;}
-            header nav{
-                float: left;}
-            header nav ul{
-                margin: 0;
-                padding: 0;
-                font-family: cambria;}
-            header nav ul li{
-                float: left;
-                padding: 0em 0 0em 1.3em;}
-            header nav ul li a, 
-            header nav ul li a:visited{
-                font-size: 1em;
-                color: #4A4A4A;
-                text-decoration: none;}
-            header nav ul li a.active, 
-            header nav ul li a:focus, 
-            header nav ul li a:hover{
-                color: green;}
-            li{
-                display: inline;
-                margin: 10px;}
-        </style>
-        	<div id="container">
-                <header>
-			<!-- Logo -->
-            <div id= "logo">
-                <a href= "../templates/index.html"><img src="../img/DragonEventsLogo.JPG" alt="DragonEvents Logo" height="150" width="200"></a>
-                <h2>Welcome to DragonEvents!</h2>
-            </div>
-			<!-- Navigation -->
-			<nav>
-				<ul class= "nav"> 
-                    <li> <a href= "../templates/index.html">Home</a></li>
-                    <li> <a href= "../templates/Events.html">Events</a></li>
-                    <li> <a href= "../templates/about.html">About us</a></li>
-                    <li> <a href= "../templates/Login.html">Log in</a></li>
-                </ul>
-			</nav>
-                </header>
-	   <body>
-           <div id="submission">
-        <h2> Event Submission</h2>
+	</head>
+	<body>
+        <h1> DragonEvent Submission</h1>
         <p>Event Title:</p><input id='name' size="35" maxlength="75"/ ><br>
         <p>Description:</p><input id='description' size="50" style="height:100px"/><br>
         <p>Start Date : <input id='start_date' type="date" style="margin-right: 30px"/>
             End Date   : <input id='end_date'type="date"/></p>
         <p>Location   :</p><input id='location' size="35"/><br>
         <p>Event Type :</p><input id='event_type' size="35"/><br><br>
-        <button type=submit onclick='submitForm()' >Submit</button>
-           </div>
+        <button type=submit onclick='submitForm()'>Submit</button>
     </body>
-    </div>
 </html>
