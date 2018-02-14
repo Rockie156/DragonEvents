@@ -1,17 +1,22 @@
-function submitForm() {
-  var dictionary = {
-    "name": $('#name').val(),
-    "description":$('#description').val(),
-    "start_date":$('#start_date').val(),
-    "end_date":$('#end_date').val(),
-    "location":$('#location').val(),
-    "event_type":$('#event_type').val(),
-            };
+$().ready(function() {
+	$('#eventForm').validate({
+		rules: {
+			name: "required",
+			start_date: "required",
+			end_date: "required",
+			description: "required",
+			location: "required"
+		},
+		messages: {
+			name: "You must give your event a name!"
+		},
+		submitHandler: function(form) {
 			$.ajax({
 				url: "./submit",
 				type: "POST",
 				dataType: "text",
-                   data: dictionary
-
+                data: $(form).serialize()
 			});
-}
+		}
+	});
+});
