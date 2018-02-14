@@ -12,11 +12,14 @@ var app = admin.initializeApp({
 		databaseURL: "https://dragonevents-ac729.firebaseio.com"
 });
 
-var db = app.database().ref().once('value');
+var db = app.database().ref();
 
 module.exports = {
   get_connection: function() {
 	  return get_connection();
+  },
+  create_event: function(a,b,c,d,e) {
+	  return create_event(a,b,c,d,e);
   }
 };
 
@@ -27,12 +30,12 @@ function get_connection() {
 /** Create a new event in the database **/
 function create_event(eventName, eventDescription, eventStart, eventEnd, eventOwnedBy) {
 	var eventsRef = app.database().ref('events');
-	var newEventRef = eventsRef.push({
+	// create a new event and return its ID
+	return eventsRef.push({
 		name: eventName,
 		desc: eventDescription,
 		start: eventStart,
 		end: eventEnd,
 		user: eventOwnedBy
-	});
-	return newEventRef;
+	}).key;
 }
