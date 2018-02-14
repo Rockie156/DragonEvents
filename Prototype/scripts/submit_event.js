@@ -16,6 +16,9 @@ $().ready(function() {
 				type: "POST",
 				dataType: "text",
                 data: $(form).serialize()
+			}).done(function() { 
+				alert('Successfully submitted event!');
+				$("#eventForm").trigger('reset'); 
 			});
 		}
 	});
