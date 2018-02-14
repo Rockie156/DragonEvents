@@ -1,5 +1,4 @@
 var http = require('http');
-var fs = require('fs');
 var express = require('express');
 var pug = require('pug');
 var database = require('./firebase.js');
@@ -54,51 +53,3 @@ app.post('/submit', function(req, res) {
 app.listen(2080, function () {
     console.log('listening on port', 2080);
 });
-
-/**
-http.createServer(function (req, res){
-    if(req.url === '/index.html'){
-        fs.readFile('templates/index.html',function(err,data) {
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            res.write(data);
-            res.end();
-        });
-    } else if(req.url === '/Events.html'){
-        fs.readFile('templates/Events.html',function(err,data) {
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            res.write(data);
-            res.end();
-        });
-    } else if(req.url === '/about.html'){
-        fs.readFile('templates/about.html',function(err,data) {
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            res.write(data);
-            res.end();
-        });
-    } else if(req.url === '/Login.html'){
-        fs.readFile('templates/Login.html',function(err,data) {
-            res.writeHead(200, {'Content-Type': 'text/html'});
-            res.write(data);
-            res.end();
-        });
-    } else if(req.url === '/index.css') {
-        fs.readFile('css/index.css',function(err,data) {
-            res.writeHead(200, {'Content-Type': "text/css"});
-            res.write(data);
-            res.end();
-        });
-	} else if(req.url === '/auth.html') {
-		fs.readFile('templates/auth.html', function(err,data) {
-			res.writeHead(200, {'Content-Type':"text/html"});
-			res.write(data);
-			res.end();
-		});
-	} else {
-		res.writeHead(404);
-		res.write('Page not found.');
-		res.end();
-	}
-}).listen(8080, function() {
-	console.log('listening on port', 8080)
-});
-**/
