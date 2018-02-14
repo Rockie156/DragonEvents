@@ -36,6 +36,16 @@ app.get('/events', function(req,res) {
 	});
 });
 
+app.get('/about', function(req,res) {
+	res.render('aboutus');
+	res.end();
+});
+
+app.get('/login', function(req,res) {
+	res.render('login');
+	res.end();
+});
+
 app.get('/create_event', function(req, res) {
 	res.render('create_event');
 	res.end();
