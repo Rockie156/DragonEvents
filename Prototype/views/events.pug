@@ -27,7 +27,7 @@ head
   #MainContent
     // Feature
     section#Submit
-      a(href='../testForm.html')
+      a(href='/create_event')
         img(src='../img/submit_event.jpg', height='50', width='200')
     section#filter
       input#name_input(placeholder='Event Name')
@@ -47,27 +47,9 @@ head
           input.tag(type='checkbox')
           | Food
     #EventList
-      section#Events
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
-      section#Events
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
-      section#Events
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
-      section#Events
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
-      section#Events
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
-      section#Events
-        h3 Event Name
-        p About the Events
-        p Event Date and Tme
+      each event in events
+        section#Events
+          h3 #{event.name}
+          p #{event.desc}
+          p #{event.start}
+          p #{event.end}
