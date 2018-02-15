@@ -1,25 +1,27 @@
 html
   head
-    script(src='https://code.jquery.com/jquery-3.3.1.js', integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=', crossorigin='anonymous')
+    script(src='https://code.jquery.com/jquery-3.3.1.js')
+    script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js')
     script(src='../scripts/submit_event.js')
   body
     h1  DragonEvent Submission
-    p Event Title:
-    input#name(size='35', maxlength='75')
-    br
-    p Description:
-    input#description(size='50', style='height:100px')
-    br
-    p
-      | Start Date : 
-      input#start_date(type='date', style='margin-right: 30px')
-      |             End Date   : 
-      input#end_date(type='date')
-    p Location   :
-    input#location(size='35')
-    br
-    p Event Type :
-    input#event_type(size='35')
-    br
-    br
-    button(type='submit', onclick='submitForm()') Submit
+    form#eventForm
+      p Event Title:
+      input#name(name='name', size='35', maxlength='75')
+      br
+      p Description:
+      input#description(name='description', size='50', style='height:100px')
+      br
+      p
+        | Start Date : 
+        input#start_date(name='start_date', type='date', style='margin-right: 30px')
+        |             End Date   : 
+        input#end_date(name='end_date', type='date')
+      p Location   :
+      input#location(name='location', size='35')
+      br
+      p Event Type :
+      input#event_type(name='event_type', size='35')
+      br
+      br
+      button(type='submit') Submit
