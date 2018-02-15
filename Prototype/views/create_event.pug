@@ -3,25 +3,86 @@ html
     script(src='https://code.jquery.com/jquery-3.3.1.js')
     script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js')
     script(src='../scripts/submit_event.js')
-  body
-    h1  DragonEvent Submission
-    form#eventForm
-      p Event Title:
-      input#name(name='name', size='35', maxlength='75')
-      br
-      p Description:
-      input#description(name='description', size='50', style='height:100px')
-      br
-      p
-        | Start Date : 
-        input#start_date(name='start_date', type='date', style='margin-right: 30px')
-        |             End Date   : 
-        input#end_date(name='end_date', type='date')
-      p Location   :
-      input#location(name='location', size='35')
-      br
-      p Event Type :
-      input#event_type(name='event_type', size='35')
-      br
-      br
-      button(type='submit') Submit
+    style.
+        body{
+        background-image: url("../img/stringio.jpg"), linear-gradient(rgba(0,0,0,0.25),rgba(0,0,0,0.25));
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: repeat;
+        font-family: cambria;
+        }
+        #submission{text-align: center;}
+        #container{
+        background-color: white;
+        width: 960px;
+        height: auto;
+        margin: 0px auto;
+        padding: 20px;}
+        #container header{
+        font-family: cambria;
+        background-color: white;
+        padding: 0 0 11em;
+        height: 90px;}
+        header nav{
+        float: left;}
+        header nav ul{
+        margin: 0;
+        padding: 0;
+        font-family: cambria;}
+        header nav ul li{
+        float: left;
+        padding: 0em 0 0em 1.3em;}
+        header nav ul li a,
+        header nav ul li a:visited{
+        font-size: 1em;
+        color: #4A4A4A;
+        text-decoration: none;}
+        header nav ul li a.active,
+        header nav ul li a:focus,
+        header nav ul li a:hover{
+        color: green;}
+        li{
+        display: inline;
+        margin: 10px;}
+  #container
+    header
+      // Logo
+      #logo
+        a(href='../templates/index.html')
+          img(src='../img/DragonEventsLogo.JPG', alt='DragonEvents Logo', height='150', width='200')
+        h2 Welcome to DragonEvents!
+      // Navigation
+      nav
+        ul.nav
+          li
+            a(href='../templates/index.html') Home
+          li
+            a(href='../templates/Events.html') Events
+          li
+            a(href='../templates/about.html') About us
+          li
+            a(href='../templates/Login.html') Log in
+    body
+      #submission
+          h2  DragonEvent Submission
+          form#eventForm
+            p Event Title:
+            input#name(name='name', size='35', maxlength='75')
+            br
+            p Description:
+            input#description(name='description', size='50', style='height:100px')
+            br
+            p
+            | Start Date : 
+            input#start_date(name='start_date', type='date', style='margin-right: 30px')
+            |             End Date   : 
+            input#end_date(name='end_date', type='date')
+            p Location   :
+            input#location(name='location', size='35')
+            br
+            p Event Type :
+            input#event_type(name='event_type', size='35')
+            br
+            br
+            button(type='submit') Submit
