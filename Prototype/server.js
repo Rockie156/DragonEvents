@@ -36,6 +36,22 @@ app.get('/events', function(req,res) {
 	});
 });
 
+app.get('/view/:id', function(req,res) {
+        var db = database.get_connection();
+        var event_id = req.params.id;
+        db.child('events').child(event_id)
+        .once('value')
+        .then(function(snapshot){
+              if(snapshot.val()==null) {
+                res.render("event_not_found");
+                res.end();
+              } else {
+                res.render('view_event', {"event": snapshot.val()});
+                res.end();
+              }
+    });
+});
+
 app.get('/about', function(req,res) {
 	res.render('aboutus');
 	res.end();
