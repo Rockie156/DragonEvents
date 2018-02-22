@@ -1,35 +1,72 @@
 doctype html
-head
-  meta(charset='utf-8')
-  title DragonEvents
-  link(rel='stylesheet', type='text/css', href='../css/index.css')
-// Page Container
-#container
-  // Header
-  header
-    // Logo
-    #logo
-      img(src='../img/DragonEventsLogo.JPG', alt='DragonEvents Logo', height='150', width='200')
-      h2 Welcome to DragonEvents!
-    // Navigation
-    nav
-      ul.nav
-        li
-          a(href='/') Home
-        li
-          a(href='/Events') Events
-        li
-          a(href='/about') About us
-        li
-          a(href='/login') Log in
-  // Main Content
-  #MainContent
-    #MainPage
-      h3 Featured Events
-      // Feature
-      each event in events
-        #MainEvents
-          h3 #{event.name}
-          p #{event.desc}
-          p #{event.start}
-          p #{event.end}
+html
+    head
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title DragonEvents
+        link(rel='stylesheet', type='text/css', href='../css/main.css')
+        body.landing
+        // Header
+        header#header.alt
+          h1
+            strong
+              a(href='/') DragonEvents
+          nav#nav
+            ul
+              li
+                a(href='/') Home
+              li
+                a(href='/about') About Us
+              li
+                a(href='/events') Events
+              li
+                a(href='/login') Login
+        a.navPanelToggle(href='#menu')
+          span.fa.fa-bars
+        // Banner
+        section#banner
+          h2 DragonEvents
+          p
+            | A website for sharing and seeing any events going near the Drexel University Campus.
+          p To be part of DragonEvents:
+          ul.actions
+            li
+              a.button.special.big(href='#') Login
+        // Three
+        section#three.wrapper.style1
+          .container
+            header.major.special
+              h2 Featured Events
+              p Events hosted by business users
+            .feature-grid
+              .feature
+                .image.rounded
+                  img(src='../images/pic04.jpg', alt='')
+                .content
+                  header
+                    h4  asdf 
+                    p  asdf
+                  p  asdf
+                  p  asdf
+        // Four
+        section#four.wrapper.style3.special
+          .container
+            header.major
+              h2 Drexel University Campus Map
+              img(src='../images/map.JPG')
+        // Footer
+        footer#footer
+          .container
+            ul.copyright
+              li © Untitled
+              li
+                | Design: 
+                a(href='http://templated.co') TEMPLATED
+              li
+                | Images: 
+                a(href='http://unsplash.com') Unsplash
+        // Scripts
+        script(src='../js/jquery.min.js')
+        script(src='../js/skel.min.js')
+        script(src='../js/util.js')
+        script(src='../js/main.js')
