@@ -4,7 +4,15 @@ $().ready(function() {
 	    name: "required",
 	    start_date: "required",
 	    start_time: "required",
-	    end_date: "required",
+	    end_date: {
+		  required: true,
+		    end_after_start: {
+			  // We only call end_after_start if start_date is populated with a valid date
+			  depends: function(element) {
+				return !isNaN(new Date($('#start_date').val()).getTime());
+			  }
+		    }
+		},
 	    end_time: "required",
 	    description: "required",
 	    location: "required"
@@ -28,11 +36,10 @@ $().ready(function() {
 
 $.validator.addMethod(
     "end_after_start",
-    function(value, element, requiredValue) {
-	var start_elt = new Date($('#start_date').val());
-	var start = new Date($('#start_date').val()).getTime();
-	var end = new Date($('#end_date').val()).getTime();
-	return start > end;
+    function(value, element) {
+	  var start = new Date($('#start_date').val()).getTime();
+	  var end = new Date($('#end_date').val()).getTime();
+	  return start <= end;
     },
     "End date must be after start date!"
 );
