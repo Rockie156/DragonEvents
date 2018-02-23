@@ -39,23 +39,25 @@ app.get('/test', function(req, res){
         res.end();
         })
 app.get('/events', function(req,res) {
+	var name = req.query.name;
+	var start_date = req.query.start_date;
+	var end_date = req.query.end_date;
     var db = database.get_connection();
 	db.once('value', function(snapshot) {
         var events = snapshot.val().events;
-        if (name){
+        if (name) {
             name = name.toLowerCase();
-                for(var key in events) {
-                    var event_name= events[key].name.toLowerCase();
-            if(event_name.indexOf(name)== -1){
+                for (var key in events) {
+					var event_name= events[key].name.toLowerCase();
+            if(event_name.indexOf(name)== -1) {
                 delete events[key];
-            
                 }
                 }
         }
 
-        if (start_date){
+        if (start_date) {
             start_date= parseDate(start_date);
-            for(var key in events) {
+            for (var key in events) {
             var event_start= parseDate(events[key].start_date);
                 if( event_start < start_date ){
                     delete events[key];
@@ -64,9 +66,9 @@ app.get('/events', function(req,res) {
             }
         }
             
-        if (end_date){
-            end_date= parseDate(end_date);
-            for(var key in events) {
+        if (end_date) {
+            end_date = parseDate(end_date);
+            for (var key in events) {
             var event_end = parseDate(events[key].end_date);
                 if( event_end < end_date ){
                     delete events[key];
@@ -76,8 +78,8 @@ app.get('/events', function(req,res) {
         }
 		res.render('Events', {"events": events});
 		res.end();
-            }.bind({name: req.query.name, start_date: req.query.start_date, end_date: req.query.end_date})
-            );
+            }.bind({name: name, start_date: start_date, end_date: end_date})
+    );
         
         
 });
