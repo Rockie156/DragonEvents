@@ -52,30 +52,12 @@ html
               input.tag(type='checkbox')
               | Food
         #EventList
-          section#Events
-            h3 Event Name
-            p About the Events
-            p Event Date and Tme
-          section#Events
-            h3 Event Name
-            p About the Events
-            p Event Date and Tme
-          section#Events
-            h3 Event Name
-            p About the Events
-            p Event Date and Tme
-          section#Events
-            h3 Event Name
-            p About the Events
-            p Event Date and Tme
-          section#Events
-            h3 Event Name
-            p About the Events
-            p Event Date and Tme
-          section#Events
-            h3 Event Name
-            p About the Events
-            p Event Date and Tme
+          each event in events
+            section#Events
+              h3 #{event.name}
+              p #{event.description}
+              p #{event.start_date} #{event.start_time}
+              p #{event.end_date} #{event.end_time}
     // Footer
     footer#footer
       .container
