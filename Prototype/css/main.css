@@ -3273,9 +3273,12 @@
     height: 500px;
     overflow-x: auto;}
 
-.gmap{display:block; position:relative; width:100%; height:400px;}/* Height (min or max-height don't work) has to be defined, otherwise the map wont be shown */
+/*
+.gmap{display:block; position:relative; width:100%; height:350px;} Height (min or max-height don't work) has to be defined, otherwise the map wont be shown 
 .gmap #gmapcanvas{width:100%; height:100%;}
 .gmap #gmapcanvas img[src*="gstatic.com/"], #gmapcanvas img[src*="googleapis.com/"]{width:auto; max-width:none; height:auto;}
+*/
+
 #Submit{
     float:right;}
 #form{
@@ -3286,3 +3289,6 @@
     text-align: center;}
 #form input, button{
     margin: 5px;}
+.map h2{
+    color: white;
+}
