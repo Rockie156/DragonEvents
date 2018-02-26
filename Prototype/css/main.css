@@ -1809,7 +1809,7 @@
 		-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		background-color: #323037;
+		background-color: #121254;
 		border-radius: 4px;
 		color: #ffffff !important;
 		border: 0;
@@ -1830,7 +1830,7 @@
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			background-color: #3e3c45;
+			background-color: #ffc34d;
 		}
 
 		input[type="submit"]:active,
@@ -1838,7 +1838,7 @@
 		input[type="button"]:active,
 		button:active,
 		.button:active {
-			background-color: #262429;
+			background-color: #000000;
 		}
 
 		input[type="submit"].icon,
@@ -1942,7 +1942,7 @@
 		input[type="button"].special,
 		button.special,
 		.button.special {
-			background-color: #f32853;
+			background-color: #ffc34d;
 			color: #ffffff !important;
 		}
 
@@ -1951,7 +1951,7 @@
 			input[type="button"].special:hover,
 			button.special:hover,
 			.button.special:hover {
-				background-color: #f44066;
+				background-color: #121254;
 			}
 
 			input[type="submit"].special:active,
@@ -1959,7 +1959,7 @@
 			input[type="button"].special:active,
 			button.special:active,
 			.button.special:active {
-				background-color: #f21040;
+				background-color: #000000;
 			}
 
 		@media screen and (max-width: 480px) {
@@ -2166,16 +2166,14 @@
 		padding: 0.75em 1em;
 	}
 
+/*
 	input[type="checkbox"],
 	input[type="radio"] {
-		-moz-appearance: none;
-		-webkit-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
-		display: block;
-		float: left;
+		-moz-appearance: scale(2);
+		-webkit-appearance: scale(2);
+		-ms-appearance: scale(2);
+		display: inline;
 		margin-right: -2em;
-		opacity: 0;
 		width: 1em;
 		z-index: -1;
 	}
@@ -2185,7 +2183,7 @@
 			text-decoration: none;
 			color: #666;
 			cursor: pointer;
-			display: inline-block;
+			display: inline;
 			font-size: 1em;
 			font-weight: 400;
 			padding-left: 2.4em;
@@ -2265,6 +2263,7 @@
 		opacity: 1.0;
 		color: #aaa !important;
 	}
+*/
 
 /* Icon */
 
@@ -2585,7 +2584,7 @@
 	}
 
 	header.major {
-		margin: 0 0 6em 0;
+		margin: 0 0 2em 0;
 	}
 
 		header.major h2 {
@@ -3262,29 +3261,28 @@
 					border-left: 0;
 					display: block;
 					margin: 0;
-					padding: 0;
-				}
-
-		}
-#filter
-{
+					padding: 0;}}
+#filter{
+    margin-left: 50px;}
+#filter li{
     float: none;
-}
+    display: inline;
+    margin-right: 10px;}
 
 #EventList{
-    overflow: scroll;
-}
+    height: 500px;
+    overflow-x: auto;}
+
 .gmap{display:block; position:relative; width:100%; height:400px;}/* Height (min or max-height don't work) has to be defined, otherwise the map wont be shown */
 .gmap #gmapcanvas{width:100%; height:100%;}
 .gmap #gmapcanvas img[src*="gstatic.com/"], #gmapcanvas img[src*="googleapis.com/"]{width:auto; max-width:none; height:auto;}
-#Submit
-{
-    float:right;
-    margin-right: 30px;
-    padding-right: 30px;
-    padding: 5px;
-    border-style: solid;
-    border-color: black;
-    border-width: 1.5px;
-    
-}
+#Submit{
+    float:right;}
+#form{
+    position: relative;
+    z-index: 1;
+    width: 300px;
+    margin: 0 auto 10px;
+    text-align: center;}
+#form input, button{
+    margin: 5px;}

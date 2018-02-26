@@ -1,8 +1,4 @@
 doctype html
-//
-  Spatial by TEMPLATED
-  templated.co @templatedco
-  Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 html
   head
     title DragonEvents
@@ -31,6 +27,16 @@ html
     section#main.wrapper
       .container
         header.major.special
+          h2  Login 
+        p(align='center') Please login using a verrified email adress and password. 
+        #form
+          input(type='text', placeholder='User Email')
+          input(type='text', placeholder='Password')
+          button Login
+          button Register
+          p
+            br
+            | Don't have an account? Register for one!
     // Footer
     footer#footer
       .container
@@ -43,7 +49,8 @@ html
             | Images: 
             a(href='http://unsplash.com') Unsplash
     // Scripts
-    script(src='assets/js/jquery.min.js')
-    script(src='assets/js/skel.min.js')
-    script(src='assets/js/util.js')
-    script(src='assets/js/main.js')
+    script(src='../js/jquery.min.js')
+    script(src='../js/skel.min.js')
+    script(src='../js/util.js')
+    script(src='../js/main.js')
+    script(src='../js/gmap.js')

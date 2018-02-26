@@ -33,11 +33,11 @@ html
         header.major.special
           h2 Events
         section#Submit
-            a(href='../testForm.html')
-                img(src='../img/submit_event.jpg', height='50', width='200')
+            a.button.special.big(href='/create_event') Submit Events
         section#filter
           input#name_input(placeholder='Event Name')
           input#start_date(placeholder='Start Date', type='date')
+          input#start_time(placeholder='Start Time', type='time')
           ul
             li
               input.tag(type='checkbox')

@@ -1,54 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>DragonEvents</title>
-        <link rel="stylesheet" type="text/css" href="../css/index.css">
+<!DOCTYPE HTML>
+<!--
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>DragonEvents</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="../css/main.css" />
+	</head>
+	<body class="landing">
 
-</head>
-<body>
-	<!-- Page Container -->
-	<div id="container">
 		<!-- Header -->
-		<header>
-			<!-- Logo -->
-            <div id= "logo">
-                <a href= "../templates/index.html"><img src="../img/DragonEventsLogo.JPG" alt="DragonEvents Logo" height="150" width="200"></a>
-                <h2>Welcome to DragonEvents!</h2>
-            </div>
-			<!-- Navigation -->
-			<nav>
-				<ul class= "nav"> 
-                    <li> <a href= "../templates/index.html">Home</a></li>
-                    <li> <a href= "../templates/Events.html">Events</a></li>
-                    <li> <a href= "../templates/about.html">About us</a></li>
-                    <li> <a href= "../templates/Login.html">Log in</a></li>
-                </ul>
-			</nav>
-		</header>
+			<header id="header" class="alt">
+				<h1><strong><a href="index.html">DragonEvents</a></strong></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About Us</a></li>
+						<li><a href="events.html">Events</a></li>
+                        <li><a href="login.html">Login</a></li>
+					</ul>
+				</nav>
+			</header>
 
-		<!-- Main Content -->
-        <div id="MainContent">
-            <div id="MainPage">
-            <h3>Featured Events</h3>
-			<!-- Feature -->
-        <div id="MainEvents">
-            <h3>Event Name</h3>
-            <p>About the Events</p>
-            <p>Event Date and Tme</p>
-        </div>
-        <div id="MainEvents">
-            <h3>Event Name</h3>
-            <p>About the Events</p>
-            <p>Event Date and Tme</p>
-        </div>
-        <div id="MainEvents">
-            <h3>Event Name</h3>
-            <p>About the Events</p>
-            <p>Event Date and Tme</p>
-        </div>
-    </div>
-    </div>
-    </div>
-</body>
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Banner -->
+			<section id="banner">
+				<h2>DragonEvents</h2>
+				<p>A website for sharing and seeing any events going near the Drexel University Campus. </p>
+                <p>To be part of DragonEvents:</p>
+				<ul class="actions">
+					<li><a href="../templates/login.html" class="button special big">Login</a></li>
+				</ul>
+			</section>
+
+
+			<!-- Three -->
+				<section id="three" class="wrapper style1">
+					<div class="container">
+						<header class="major special">
+							<h2>Featured Events</h2>
+							<p>Events hosted by business users</p>
+						</header>
+						<div class="feature-grid">
+							<div class="feature">
+								<div class="image rounded"><img src="images/pic04.jpg" alt="" /></div>
+								<div class="content">
+									<header>
+                                        each event in events
+										<h4> #{event.name} </h4>
+										<p> #{event.desc} </p>
+									</header>
+									<p> #{event.start} </p>
+                                    <p> #{event.end} </p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Four -->
+				<section id="four" class="wrapper style3 special">
+					<div class="container">
+						<header class="major">
+							<h2>Drexel University Campus Map</h2>
+                              <img src="../images/map.JPG">
+						</header>
+					</div>
+				</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-facebook"></a></li>
+						<li><a href="#" class="icon fa-twitter"></a></li>
+						<li><a href="#" class="icon fa-instagram"></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+						<li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="../js/jquery.min.js"></script>
+			<script src="../js/skel.min.js"></script>
+			<script src="../js/util.js"></script>
+			<script src="../js/main.js"></script>
+            <script src="../js/gmap.js"></script>
+	</body>
 </html>
