@@ -42,17 +42,16 @@ html
           h2 Featured Events
           p Events hosted by business users
         .feature-grid
-            each event in events
+            each event,event_id in events
               .feature
                 .image.rounded
                   img(src='img/logo.jpg', alt='')
                 .content
                   header
-                      a(href='/view/#{event}')
+                      a(href='/view/' + event_id)
                         h4  #{event.name}
                       p #{event.location}
-                      p  #{event.start_date} #{event.start_time}
-                      p  #{event.end_date} #{event.end_time}
+                      p  #{event.start_date} #{event.start_time} ~ #{event.end_date} #{event.end_time}
                       p #{event.description}
     // Four
     section#four.wrapper.style3.special
