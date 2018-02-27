@@ -20,7 +20,10 @@ html
           li
             a(href='/events') Events
           li
-            a(href='/login') Login
+            if user != null
+                a(href='/') #{users.email}
+            else
+                a(href='/login') Login
     a.navPanelToggle(href='#menu')
       span.fa.fa-bars
     // Main

@@ -24,7 +24,10 @@ html
           li
             a(href='/events') Events
           li
-            a(href='/login') Login
+            if user != null
+                a(href='/') #{users.email}
+            else
+                a(href='/login') Login
     a.navPanelToggle(href='#menu')
       span.fa.fa-bars
     // Main
@@ -55,8 +58,9 @@ html
         #EventList
           each event in events
             section#Events
-                a(href='/view_event')
+                a(href="view/#{event}")
                     h3 #{event.name}
+                p #{event.location}
                 p #{event.description}
                 p #{event.start_date} #{event.start_time}
                 p #{event.end_date} #{event.end_time}
