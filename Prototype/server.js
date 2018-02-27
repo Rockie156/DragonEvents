@@ -4,7 +4,7 @@ var pug = require('pug');
 var database = require('./firebase.js');
 require('express-session');
 var bodyParser = require('body-parser');
-var nodemailer = require('nodemailer');
+var mailer = require('./mailer.js');
 
 
 app = express();
@@ -131,6 +131,18 @@ app.get('/create_event', function(req, res) {
     res.end();
 });
 
+app.get('/register', function(req, res) {
+	res.render('register');
+	res.end();
+});
+
+app.post('/validate_email', function(req, res) {
+	// Returns if email is registered to another user or not
+	// TODO search firebase and return true or false
+	res.send('True');
+	res.end();
+});
+
 app.post('/submit_event', function(req, res) {
     var new_event_id = database.create_event(req.body);
     if (new_event_id) {
@@ -141,11 +153,18 @@ app.post('/submit_event', function(req, res) {
 });
 
 app.post('/submit_user', function(req, res) {
-    req.body.secret=Math.floor(Math.random()* 100000) +1 ;
+    req.body.secret=Math.floor(Math.random()* 100000) +1;
     var new_user_id = database.create_user(req.body);
     if (new_user_id) {
         console.log('Successfully created account!');
     }
+	mail_options = {
+		from: 'drexeldragonevents@gmail.com',
+		to: req.body.email,
+		subject: 'Confirm registration',
+		text: "Click the following link to confirm your email: localhost:2080/confirm/" + new_user_id + "/" + req.body.secret
+	};
+	mailer.send_mail(mail_options);
     res.send('Coming soon...');
     res.end();
 });
