@@ -1,5 +1,56 @@
-p Viewing an event.
-p #{event.name}
-p #{event.desc}
-p #{event.start}
-p #{event.end}
+doctype html
+//
+  Spatial by TEMPLATED
+  templated.co @templatedco
+  Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+html
+  head
+    title DragonEvents
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='../css/main.css')
+  body
+    // Header
+    header#header
+      h1
+        strong
+          a(href='/') DragonEvents
+      nav#nav
+        ul
+          li
+            a(href='/') Home
+          li
+            a(href='/about') About Us
+          li
+            a(href='/events') Events
+          li
+            a(href='/login') Login
+    a.navPanelToggle(href='#menu')
+      span.fa.fa-bars
+    // Main
+    section#main.wrapper
+      .container
+        header.major.special
+            h3 Event Title
+                each event in events
+                    p #{event.name}
+                    p #{event.desc}
+                    p #{event.start}
+                    p #{event.end}
+        
+    // Footer
+    footer#footer
+      .container
+        ul.copyright
+          li © Untitled
+          li
+            | Design: 
+            a(href='http://templated.co') TEMPLATED
+          li
+            | Images: 
+            a(href='http://unsplash.com') Unsplash
+    // Scripts
+    script(src='../js/jquery.min.js')
+    script(src='../js/skel.min.js')
+    script(src='../js/util.js')
+    script(src='../js/main.js')

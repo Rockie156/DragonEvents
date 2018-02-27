@@ -32,9 +32,10 @@ html
       .container
         header.major.special
           h2 Events
-        section#Submit
+          section#Submit
             a.button.special.big(href='/create_event') Submit Events
         section#filter
+          h4 Filter:
           input#name_input(placeholder='Event Name')
           input#start_date(placeholder='Start Date', type='date')
           input#start_time(placeholder='Start Time', type='time')
@@ -54,10 +55,11 @@ html
         #EventList
           each event in events
             section#Events
-              h3 #{event.name}
-              p #{event.description}
-              p #{event.start_date} #{event.start_time}
-              p #{event.end_date} #{event.end_time}
+                a(href='/view_event')
+                    h3 #{event.name}
+                p #{event.description}
+                p #{event.start_date} #{event.start_time}
+                p #{event.end_date} #{event.end_time}
     // Footer
     footer#footer
       .container
