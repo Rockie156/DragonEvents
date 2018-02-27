@@ -56,9 +56,9 @@ html
               input.tag(type='checkbox')
               | Food
         #EventList
-          each event in events
+          each event, event_id in events
             section#Events
-                a(href="view/#{event}")
+                a(href="view/" + event_id)
                     h3 #{event.name}
                 p #{event.location}
                 p #{event.description}

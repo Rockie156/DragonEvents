@@ -3299,3 +3299,8 @@
 #Events h3{
     margin-top: 30px;
 }
+#register{
+    width: 30em;
+    text-align: center;
+    margin: 2em auto 
+}
