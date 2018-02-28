@@ -2,7 +2,7 @@ var http = require('http');
 var express = require('express');
 var pug = require('pug');
 var database = require('./firebase.js');
-require('express-session');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 var mailer = require('./mailer.js');
 
@@ -10,6 +10,12 @@ var mailer = require('./mailer.js');
 app = express();
 app.set('view engine', 'pug');
 app.use(express.static('.'));
+app.use(session({
+	secret: 'dragonevents',
+    resave: true,
+    saveUninitialized: true
+	})
+);
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
@@ -168,7 +174,6 @@ app.get('/confirm/:user_id/:secret', function(req, res) {
 });
 
 app.post('/is_unique_email', function(req,res) {
-	console.log('call');
 	var email = req.body.email;
 	var db = database.get_connection();
 	db.once('value', function(snapshot) {
@@ -208,6 +213,7 @@ app.post('/submit_event', function(req, res) {
 
 app.post('/submit_user', function(req, res) {
     req.body.secret=Math.floor(Math.random()* 100000) +1;
+	req.body.email = req.body.email.toLowerCase();
     var new_user_id = database.create_user(req.body);
     if (new_user_id) {
         console.log('Successfully created account!');
@@ -221,6 +227,42 @@ app.post('/submit_user', function(req, res) {
 	mailer.send_mail(mail_options);
     res.send('Coming soon...');
     res.end();
+});
+
+app.post('/login', function(req, res) {
+	// setting local variable here allows it to persist without binding
+	var password = req.body.password;
+	var db = database.get_connection();
+	req.body.email = req.body.email.toLowerCase();
+	db.child('users').orderByChild('email').equalTo(req.body.email)
+		.on('value', function(snapshot) {
+			var user;
+			for (item in snapshot.val()) {
+				// really stupid way of getting the user
+				user = snapshot.val()[item];
+				break;
+			}
+			// check if password matches and user is confirmed
+			if (user.password === password && user.is_confirmed === true) {
+				req.session.user = user;
+				res.send('true');
+				res.end();
+			} else {
+				res.send('Invalid email/password combination.');
+				res.end();
+			}
+	});
+});
+
+app.get('/test2', function(req,res) {
+	req.session.user = 'saffat';
+	res.send('ok');
+	res.end();
+});
+
+app.get('/test3', function(req,res) {
+	res.send(req.session.user);
+	res.end();
 });
 
 app.listen(2080, function () {
