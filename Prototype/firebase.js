@@ -17,19 +17,21 @@ var bucket = admin.storage();
 
 
 module.exports = {
-  get_connection: function() {
-	  return get_connection();
-  },
-  get_bucket: function(){
-    return get_bucket();
-},
-  create_event: function(a) {
-	  return create_event(a);
-  },
-create_user: function(a) {
-    return create_user(a);
-}
-    
+	get_connection: function() {
+		return get_connection();
+	},
+	get_bucket: function(){
+		return get_bucket();
+	},
+	create_event: function(a) {
+		return create_event(a);
+	},
+	create_user: function(a) {
+		return create_user(a);
+	},
+	confirm_user: function(a) {
+		return confirm_user(a);
+	}
 };
 
 function get_connection() {
@@ -51,4 +53,14 @@ function create_user(userDict) {
     var usersRef = app.database().ref('users');
     // create a new user and return its ID
     return usersRef.push(userDict).key;
+}
+
+function confirm_user(userId) {
+	var usersRef = app.database().ref('users');
+	usersRef.child(userId)
+		.update(
+			{ 
+				is_confirmed:true,
+				secret: admin.firestore.FieldValue.delete()
+			});
 }

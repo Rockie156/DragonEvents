@@ -120,6 +120,7 @@ app.get('/about', function(req,res) {
     res.render('aboutus');
     res.end();
 });
+	
 
 app.get('/login', function(req,res) {
     res.render('login');
@@ -143,10 +144,63 @@ app.post('/validate_email', function(req, res) {
 	res.end();
 });
 
+app.get('/confirm/:user_id/:secret', function(req, res) {
+	// Confirms an email
+	var db = database.get_connection();
+	var user_id = req.params.user_id;
+	var secret = req.params.secret;
+	db.child('users').child(user_id)
+		.once('value')
+		.then(function(snapshot) {
+			if (snapshot.val() == null) {
+				res.send("Failed to confirm user");
+				res.end();
+			} else if (snapshot.val().secret != secret) {
+				res.send("Failed to confirm user");
+				res.end();
+			} else {
+				database.confirm_user(user_id);
+				res.send('ok');
+				res.end();
+			}
+		}.bind({user_id:user_id, secret: secret})
+	);
+});
+
+app.post('/is_unique_email', function(req,res) {
+	console.log('call');
+	var email = req.body.email;
+	var db = database.get_connection();
+	db.once('value', function(snapshot) {
+		// really stupid way of checking object length
+		// Should be fixed to something like users.length
+		var num_users = snapshot.numChildren();
+		var users = snapshot.val().users;
+		// remove events that don't contain "name" as substring (case insensitive)
+        email = email.toLowerCase();
+        for (var id in users) {
+			var user_email = users[id].email.toLowerCase();
+			if(user_email != email) {
+				num_users -= 1;
+				delete users[id];
+            }
+        }
+		if (num_users > 0) {
+			console.log('Non-unique email: ' + email);
+			res.send('Email is taken!');
+			res.end();
+		} else {
+			console.log('unique email: ' + email);
+			res.send('true');
+			res.end();
+		}
+    }.bind({email: email}));
+});
+
 app.post('/submit_event', function(req, res) {
     var new_event_id = database.create_event(req.body);
     if (new_event_id) {
-	console.log('Successfully created event!');
+		console.log('Successfully created event!');
     }
     res.send('Coming soon...');
     res.end();
@@ -162,7 +216,7 @@ app.post('/submit_user', function(req, res) {
 		from: 'drexeldragonevents@gmail.com',
 		to: req.body.email,
 		subject: 'Confirm registration',
-		text: "Click the following link to confirm your email: localhost:2080/confirm/" + new_user_id + "/" + req.body.secret
+		text: "Click the following link to confirm your email: http://localhost:2080/confirm/" + new_user_id + "/" + req.body.secret
 	};
 	mailer.send_mail(mail_options);
     res.send('Coming soon...');

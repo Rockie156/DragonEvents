@@ -2,8 +2,17 @@ $().ready(function() {
     $('#userForm').validate({
 	rules: {
             email: {
-                isDrexel: 'on',
-                required: true
+                isDrexel: true,
+				remote: {
+					url: "./is_unique_email",
+					type: "POST",
+					dataType: "text",
+					data: { email: function() {
+								return $("#email").val();
+						}
+					}
+				},
+				required: true
             },
             password: "required"
 	},
