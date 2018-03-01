@@ -31,6 +31,12 @@ html
         form#userForm
           #register
             p
+              | First Name:
+              input#firstName(type='text', name='firstName', placeholder='First Name')
+            p
+              | Last Name:
+              input#lastName(type='text', name='lastName', placeholder='Last Name')
+            p
               | Drexel Email: 
               input#email(type='email', name='email', placeholder='Email')
             p
@@ -39,12 +45,7 @@ html
             p
               | Confirm password:
               input#confirm_password(type='password', name='confirm_password', placeholder='Confirm Password')
-            p
-              | First Name:
-              input#firstName(type='text', name='firstName', placeholder='First Name')
-            p
-              | Last Name:
-              input#lastName(type='text', name='lastName', placeholder='Last Name')
+            br
             button Submit
     // Footer
     footer#footer
