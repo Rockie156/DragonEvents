@@ -9,7 +9,8 @@ var serviceAccount = require("./secret/dragonevents-firebase-adminsdk.json");
 /** initialize app **/
 var app = admin.initializeApp({
 		credential: admin.credential.cert(serviceAccount),
-		databaseURL: "https://dragonevents-ac729.firebaseio.com"
+		databaseURL: "https://dragonevents-ac729.firebaseio.com",
+		storageBucket: "dragonevents-ac729.appspot.com"
 });
 
 var db = app.database().ref();
@@ -31,6 +32,9 @@ module.exports = {
 	},
 	confirm_user: function(a) {
 		return confirm_user(a);
+	},
+	test: function() {
+		var storageRef = admin.storage().bucket().upload("img/background.jpg").then(()=>{console.log('success.')});
 	}
 };
 
@@ -56,6 +60,8 @@ function create_user(userDict) {
 }
 
 function confirm_user(userId) {
+	// confirm user by deleting "secret" and setting "is_confirmed": true
+	// You can easily check if user is confirmed by checking the 
 	var usersRef = app.database().ref('users');
 	usersRef.child(userId)
 		.update(

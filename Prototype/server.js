@@ -33,11 +33,8 @@ app.get('/', function(req, res) {
 
 var fs = require('fs');
 app.get('/test', function(req, res){
-    var bucket = database.get_bucket();
-    console.log(bucket);
-    var file= fs.readFile("img/background.jpg");
-    bucket.child("/img/background.jpg").put(file);
-    res.send("Ok1");
+	database.test();
+    res.send("Ok");
     res.end();
 })
 
