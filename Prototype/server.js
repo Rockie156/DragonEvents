@@ -6,7 +6,6 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var mailer = require('./mailer.js');
 
-
 app = express();
 app.set('view engine', 'pug');
 app.use(express.static('.'));
@@ -16,25 +15,22 @@ app.use(session({
     saveUninitialized: true
 	})
 );
+// Allows use of #{session.user}
+app.use(function(req,res,next){
+    res.locals.session = req.session;
+    next();
+});
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-
-app.get('/test_firebase', function(req, res) {
-    var db = database.get_connection();
-    db.once('value', function(snapshot) {
-	res.render('db_test', {"events": snapshot.val().events});
-	res.end();
-    });
-});
-
 app.get('/', function(req, res) {
     var db = database.get_connection();
-    db.once('value', function(snapshot) {
-	res.render('index', {"events": snapshot.val().events});
-	res.end();
+    db.child('events').limitToFirst(4).once('value', function(snapshot) {
+		res.render('index', {"events": snapshot.val()});
+		res.end();
     });
 });
+
 var fs = require('fs');
 app.get('/test', function(req, res){
     var bucket = database.get_bucket();
@@ -44,9 +40,9 @@ app.get('/test', function(req, res){
     res.send("Ok1");
     res.end();
 })
+
 app.get('/events', function(req,res) {
-    /** store GET parameters as local variables
-	then bind them to the firebase call **/
+    /** List all events and filter based on GET params **/
     var name = req.query.name;
     var start_date = req.query.start_date;
     var end_date = req.query.end_date;
@@ -55,44 +51,39 @@ app.get('/events', function(req,res) {
 
     db.once('value', function(snapshot) {
         var events = snapshot.val().events;
-	// remove events that don't contain "name" as substring (case insensitive)
+		// remove events that don't contain "name" as substring (case insensitive)
         if (name) {
             name = name.toLowerCase();
             for (var key in events) {
-		var event_name= events[key].name.toLowerCase();
-		if(event_name.indexOf(name)== -1) {
+				var event_name = events[key].name.toLowerCase();
+				if(event_name.indexOf(name) == -1) {
                     delete events[key];
                 }
             }
         }
-	// remove events that start before "start_date"
+		// remove events that start before "start_date"
         if (start_date) {
             start_date = dateToMilliSeconds(start_date);
             for (var key in events) {
-		var event_start = dateToMilliSeconds(events[key].start_date);
+				var event_start = dateToMilliSeconds(events[key].start_date);
                 if( event_start < start_date ) {
                     delete events[key];
-
                 }
             }
         }
-	// remove events that end after "end_date"
+		// remove events that end after "end_date"
         if (end_date) {
             end_date = dateToMilliSeconds(end_date);
             for (var key in events) {
-		var event_end = dateToMilliSeconds(events[key].end_date);
+				var event_end = dateToMilliSeconds(events[key].end_date);
                 if( event_end < end_date ) {
                     delete events[key];
-
                 }
             }
         }
-	res.render('Events', {"events": events});
-	res.end();
-    }.bind({name: name, start_date: start_date, end_date: end_date})
-	   );
-
-
+		res.render('Events', {"events": events});
+		res.end();
+    });
 });
 
 function dateToMilliSeconds(date) {
@@ -143,13 +134,6 @@ app.get('/register', function(req, res) {
 	res.end();
 });
 
-app.post('/validate_email', function(req, res) {
-	// Returns if email is registered to another user or not
-	// TODO search firebase and return true or false
-	res.send('True');
-	res.end();
-});
-
 app.get('/confirm/:user_id/:secret', function(req, res) {
 	// Confirms an email
 	var db = database.get_connection();
@@ -166,58 +150,38 @@ app.get('/confirm/:user_id/:secret', function(req, res) {
 				res.end();
 			} else {
 				database.confirm_user(user_id);
-				res.send('ok');
+				res.send('success.');
 				res.end();
 			}
-		}.bind({user_id:user_id, secret: secret})
+		}
 	);
 });
 
 app.post('/is_unique_email', function(req,res) {
-	var email = req.body.email;
-	var db = database.get_connection();
+	var email = req.body.email.toLowerCase();
+	var db = database.get_connection().child('users').orderByChild('email').equalTo(email);
 	db.once('value', function(snapshot) {
-		// really stupid way of checking object length
-		// Should be fixed to something like users.length
-		var num_users = snapshot.numChildren();
-		var users = snapshot.val().users;
-		// remove events that don't contain "name" as substring (case insensitive)
-        email = email.toLowerCase();
-        for (var id in users) {
-			var user_email = users[id].email.toLowerCase();
-			if(user_email != email) {
-				num_users -= 1;
-				delete users[id];
-            }
-        }
-		if (num_users > 0) {
-			console.log('Non-unique email: ' + email);
+		if (snapshot.numChildren() > 0) {
 			res.send('Email is taken!');
 			res.end();
 		} else {
-			console.log('unique email: ' + email);
-			res.send('true');
+			res.send(true);
 			res.end();
 		}
-    }.bind({email: email}));
+    });
 });
 
 app.post('/submit_event', function(req, res) {
+	// TODO modify start/end date to date objects combining date and time
     var new_event_id = database.create_event(req.body);
-    if (new_event_id) {
-		console.log('Successfully created event!');
-    }
-    res.send('Coming soon...');
+    res.send('Success.');
     res.end();
 });
 
 app.post('/submit_user', function(req, res) {
-    req.body.secret=Math.floor(Math.random()* 100000) +1;
+    req.body.secret = Math.floor(Math.random()* 100000) + 1;
 	req.body.email = req.body.email.toLowerCase();
     var new_user_id = database.create_user(req.body);
-    if (new_user_id) {
-        console.log('Successfully created account!');
-    }
 	mail_options = {
 		from: 'drexeldragonevents@gmail.com',
 		to: req.body.email,
@@ -225,15 +189,15 @@ app.post('/submit_user', function(req, res) {
 		text: "Click the following link to confirm your email: http://localhost:2080/confirm/" + new_user_id + "/" + req.body.secret
 	};
 	mailer.send_mail(mail_options);
-    res.send('Coming soon...');
+    res.send('Success.');
     res.end();
 });
 
 app.post('/login', function(req, res) {
-	// setting local variable here allows it to persist without binding
 	var password = req.body.password;
-	var db = database.get_connection();
+	// minimal user input sanitizing
 	req.body.email = req.body.email.toLowerCase();
+	var db = database.get_connection();
 	db.child('users').orderByChild('email').equalTo(req.body.email)
 		.on('value', function(snapshot) {
 			var user;
@@ -245,24 +209,13 @@ app.post('/login', function(req, res) {
 			// check if password matches and user is confirmed
 			if (user.password === password && user.is_confirmed === true) {
 				req.session.user = user;
-				res.send('true');
+				res.send(true);
 				res.end();
 			} else {
 				res.send('Invalid email/password combination.');
 				res.end();
 			}
 	});
-});
-
-app.get('/test2', function(req,res) {
-	req.session.user = 'saffat';
-	res.send('ok');
-	res.end();
-});
-
-app.get('/test3', function(req,res) {
-	res.send(req.session.user);
-	res.end();
 });
 
 app.listen(2080, function () {
