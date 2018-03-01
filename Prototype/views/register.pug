@@ -28,23 +28,24 @@ html
       .container
         header.major.special
           h2  Registration  
-        #form
-          p
-            | Drexel Email:  
-            input(type='email', placeholder='Email')
-          p
-            | Password:
-            input(type='password', placeholder='Password')
-          p
-            | Confirm password:
-            input(type='password', placeholder='Confirm Password')
-          p
-            | First Name:
-            input(type='text', placeholder='First Name')
-          p
-            | Last Name:
-            input(type='text', placeholder='Last Name')
-          button Submit
+        form#userForm
+          #register
+            p
+              | Drexel Email: 
+              input#email(type='email', name='email', placeholder='Email')
+            p
+              | Password: 
+              input#password(type='password', name='password', placeholder='Password')
+            p
+              | Confirm password:
+              input#confirm_password(type='password', name='confirm_password', placeholder='Confirm Password')
+            p
+              | First Name:
+              input#firstName(type='text', name='firstName', placeholder='First Name')
+            p
+              | Last Name:
+              input#lastName(type='text', name='lastName', placeholder='Last Name')
+            button Submit
     // Footer
     footer#footer
       .container
@@ -62,3 +63,6 @@ html
     script(src='../js/util.js')
     script(src='../js/main.js')
     script(src='../js/gmap.js')
+    script(src='https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js')
+    script(src='../scripts/submit_user.js')
+
