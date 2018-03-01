@@ -20,7 +20,7 @@ html
           li
             a(href='/events') Events
           li
-            if user != null
+            if req.session.user != null
                 a(href='/') #{users.email}
             else
                 a(href='/login') Login
