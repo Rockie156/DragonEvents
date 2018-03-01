@@ -3304,3 +3304,6 @@
     text-align: center;
     margin: 2em auto 
 }
+#header h1, #banner h2{
+    text-transform: none;
+}
