@@ -20,7 +20,7 @@ html
           li
             a(href='/events') Events
           li
-            if user != null
+            if req.session.user != null
                 a(href='/') #{users.email}
             else
                 a(href='/login') Login
@@ -31,6 +31,8 @@ html
       h2 DragonEvents
       p
         | A website for sharing and seeing any events going near the Drexel University Campus.
+      br
+      br
       p To be part of DragonEvents:
       ul.actions
         li

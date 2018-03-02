@@ -14,20 +14,23 @@ $().ready(function() {
 				},
 				required: true
             },
-            password: "required"
-	},
-
+            password: "required",
+            confirm_password: {
+                equalTo: "#password",
+                required: true
+            }
+        },
         submitHandler: function(form) {
-	    $.ajax({
-		url: "./submit_user",
-		type: "POST",
-		dataType: "text",
+            $.ajax({
+                url: "./submit_user",
+                type: "POST",
+                dataType: "text",
                 data: $(form).serialize()
-	    }).done(function() {
-		alert('Please check email!');
-		$("#userForm").trigger('reset');
-	    });
-	}
+            }).done(function() {
+                alert('Please check email!');
+                $("#userForm").trigger('reset');
+            });
+        }
     });
 });
 
