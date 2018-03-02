@@ -94,6 +94,7 @@ app.get('/view/:id', function(req,res) {
         .once('value')
         .then(function(snapshot) {
             if(snapshot.val()==null) {
+				// TODO: event not found
                 res.render("event_not_found");
                 res.end();
             } else {
@@ -109,12 +110,17 @@ app.get('/about', function(req,res) {
 });
 
 app.get('/login', function(req,res) {
+	if (req.session.user!==undefined) {
+		res.writeHead(302, {Location: "/"});
+		res.end();
+		return;
+	}
     res.render('login');
     res.end();
 });
 
 app.get('/logout', function(req,res) {
-	delete session.user;
+	delete req.session.user;
     res.writeHead(302,  {Location: "/"});
 	res.end();
 });
@@ -125,6 +131,10 @@ app.get('/create_event', function(req, res) {
 });
 
 app.get('/register', function(req, res) {
+	if (req.session.user!==undefined) {
+		res.writeHead(302, {Location: "/"});
+		res.end();
+	}
 	res.render('register');
 	res.end();
 });
@@ -138,13 +148,16 @@ app.get('/confirm/:user_id/:secret', function(req, res) {
 		.once('value')
 		.then(function(snapshot) {
 			if (snapshot.val() == null) {
+                // TODO: user not confirmed
 				res.send("Failed to confirm user");
 				res.end();
 			} else if (snapshot.val().secret != secret) {
+                // TODO: user not confirmed
 				res.send("Failed to confirm user");
 				res.end();
 			} else {
 				database.confirm_user(user_id);
+                // TODO: user confirmed
 				res.send('success.');
 				res.end();
 			}

@@ -14,8 +14,11 @@ $().ready(function() {
                 dataType: "text",
                 data: $(form).serialize()
             }).done(function(msg) {
+				if (msg === 'true') {
+					window.location = '/';
+					return;
+				}
                 alert(msg);
-                $("#loginForm").trigger('reset');
             });
         }
     });
