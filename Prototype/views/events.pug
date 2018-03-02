@@ -8,22 +8,12 @@ block content-title
 block content
   section#filter
     h4 Filter:
-    input#name_input(placeholder='Event Name')
-    input#start_date(placeholder='Start Date', type='date')
-    input#start_time(placeholder='Start Time', type='time')
-    ul
-      li
-        input.tag(type='checkbox')
-        | Free
-      li
-        input.tag(type='checkbox')
-        | Paid
-      li
-        input.tag(type='checkbox')
-        | Music
-      li
-        input.tag(type='checkbox')
-        | Food
+    p Event Name:
+      input#name_input(placeholder='Event Name')
+    p Start Date:
+      input#start_date(placeholder='Start Date', type='date')
+    p End Date:
+      input#start_time(placeholder='Start Time', type='time')
   #EventList
     each event, event_id in events
       section#Events
