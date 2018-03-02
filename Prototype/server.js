@@ -31,13 +31,6 @@ app.get('/', function(req, res) {
     });
 });
 
-var fs = require('fs');
-app.get('/test', function(req, res){
-	database.test();
-    res.send("Ok");
-    res.end();
-})
-
 app.get('/events', function(req,res) {
     /** List all events and filter based on GET params **/
     var name = req.query.name;
