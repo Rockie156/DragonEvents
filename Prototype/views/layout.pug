@@ -20,11 +20,14 @@ html
             a(href='/about') About Us
           li
             a(href='/events') Events
-          li
-            if session.user
+          if session.user
+            li
+              a(href='/logout') Logout
+            li
               p Hello, #{session.user.firstName} #{session.user.lastName}
-            else
-              a(href='/login') Login / Register
+          else
+            li
+              a(href='/login') Login
     a.navPanelToggle(href='#menu')
       span.fa.fa-bars
     // Main

@@ -1,4 +1,5 @@
 extends layout-alt
+
 block main
   // Banner
   section#banner
@@ -7,10 +8,16 @@ block main
       | A website for sharing and seeing any events going near the Drexel University Campus.
     br
     br
-    p To be part of DragonEvents:
-    ul.actions
-      li
-        a.button.special.big(href='/login') Login
+    if session.user
+      p Welcome back, #{session.user.firstName} #{session.user.lastName}
+      ul.actions
+        li
+          a.button.special.big(href='events') View Events
+    else
+      p To be part of DragonEvents:
+      ul.actions
+        li
+          a.button.special.big(href='/login') Login
   // Three
   section#three.wrapper.style1
     .container

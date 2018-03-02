@@ -113,6 +113,12 @@ app.get('/login', function(req,res) {
     res.end();
 });
 
+app.get('/logout', function(req,res) {
+	delete session.user;
+    res.writeHead(302,  {Location: "/"});
+	res.end();
+});
+
 app.get('/create_event', function(req, res) {
     res.render('create_event');
     res.end();

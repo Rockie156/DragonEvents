@@ -1,6 +1,6 @@
 //- layout-alt.pug
 //- used exclusively for index.pug, so maybe it's not the best use of inheritance
-//- only differences are body.landing and header#healer.alt
+//- only differences are body.landing and header#header.alt
 doctype html
 html
   head
@@ -24,7 +24,7 @@ html
             a(href='/events') Events
           li
             if session.user
-              p Hello, #{session.user.firstName} #{session.user.lastName}
+              a(href='/logout') Logout
             else
               a(href='/login') Login
     a.navPanelToggle(href='#menu')
