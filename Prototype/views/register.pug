@@ -6,23 +6,18 @@ block content-title
 block content
   form#userForm
     #register
-      p
-        | First Name:
+      p First Name:
         input#firstName(type='text', name='firstName', placeholder='First Name')
-      p
-        | Last Name:
+      p Last Name:
         input#lastName(type='text', name='lastName', placeholder='Last Name')
-      p
-        | Drexel Email:
+      p Drexel Email:
         input#email(type='email', name='email', placeholder='Email')
-      p
-        | Password:
+      p Password:
         input#password(type='password', name='password', placeholder='Password')
-      p
-        | Confirm password:
+      p Confirm password:
         input#confirm_password(type='password', name='confirm_password', placeholder='Confirm Password')
       br
-          button Submit
+      button Submit
 
 block append scripts
   script(src='../js/jquery.validate.min.js')

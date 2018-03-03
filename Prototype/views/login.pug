@@ -10,11 +10,8 @@ block content
       input(name='email', id='email', type='email', placeholder='User Email')
       input(name='password', id='password', type='password', placeholder='Password')
       button Login
-      p
-        br
-        | Don't have an account?
-        a(href='/register') Register
-        |  for one!
+      br
+      p Don't have an account? #[a(href='/register') Register] for one!
 
 block append scripts
   script(src='../js/jquery.validate.min.js')

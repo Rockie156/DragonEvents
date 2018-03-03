@@ -4,8 +4,7 @@ block main
   // Banner
   section#banner
     h2 DragonEvents
-    p
-      | A website for sharing and seeing any events going near the Drexel University Campus.
+    p A website for sharing and seeing any events going near the Drexel University Campus.
     br
     br
     if session.user
@@ -34,7 +33,7 @@ block main
                     a(href='/view/' + event_id)
                       h4  #{event.name}
                     p #{event.location}
-                    p  #{event.start_date} #{event.start_time} ~ #{event.end_date} #{event.end_time}
+                    p #{event.start_date} #{event.start_time} ~ #{event.end_date} #{event.end_time}
                     p #{event.description}
   // Four
   section#four.wrapper.style3.special
