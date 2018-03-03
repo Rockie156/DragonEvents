@@ -94,8 +94,7 @@ app.get('/view/:id', function(req,res) {
         .once('value')
         .then(function(snapshot) {
             if(snapshot.val()==null) {
-				// TODO: event not found
-                res.render("event_not_found");
+                res.render('event_not_found');
                 res.end();
             } else {
                 res.render('view_event', {"event": snapshot.val()});
@@ -148,17 +147,14 @@ app.get('/confirm/:user_id/:secret', function(req, res) {
 		.once('value')
 		.then(function(snapshot) {
 			if (snapshot.val() == null) {
-                // TODO: user not confirmed
-				res.send("Failed to confirm user");
+				res.render('user_not_confirmed');
 				res.end();
 			} else if (snapshot.val().secret != secret) {
-                // TODO: user not confirmed
-				res.send("Failed to confirm user");
+                res.render('user_not_confirmed');
 				res.end();
 			} else {
 				database.confirm_user(user_id);
-                // TODO: user confirmed
-				res.send('success.');
+                res.render('user_confirmed');
 				res.end();
 			}
 		}
@@ -190,11 +186,18 @@ app.post('/submit_user', function(req, res) {
     req.body.secret = Math.floor(Math.random()* 100000) + 1;
 	req.body.email = req.body.email.toLowerCase();
     var new_user_id = database.create_user(req.body);
+    var link = "http://localhost:2080/confirm/" + new_user_id + "/" + req.body.secret;
 	mail_options = {
 		from: 'drexeldragonevents@gmail.com',
 		to: req.body.email,
 		subject: 'Confirm registration',
-		text: "Click the following link to confirm your email: http://localhost:2080/confirm/" + new_user_id + "/" + req.body.secret
+		text: "Click the following link to confirm your email: " + link,
+        html: pug.renderFile('./views/confirm_email.pug', { link: link }),
+        attachments: [{
+          filename: 'DragonEvents.jpg',
+          path: './img/DragonEventsLogo.jpg',
+          cid: 'DragonEventsLogo'
+        }]
 	};
 	mailer.send_mail(mail_options);
     res.send('Success.');
@@ -215,7 +218,7 @@ app.post('/login', function(req, res) {
 				break;
 			}
 			// check if password matches and user is confirmed
-			if (user.password === password && user.is_confirmed === true) {
+			if (user !== undefined && user.password === password && user.is_confirmed === true) {
 				req.session.user = user;
 				res.send(true);
 				res.end();
