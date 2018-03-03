@@ -8,12 +8,14 @@ block content-title
 block content
   section#filter
     h4 Filter:
-    p Event Name:
-      input#name_input(placeholder='Event Name')
-    p Start Date:
-      input#start_date(placeholder='Start Date', type='date')
-    p End Date:
-      input#start_time(placeholder='Start Time', type='time')
+    form#eventFilter
+      p Event Name:
+        input#name_input(placeholder='Event Name')
+      p Start Date:
+        input#start_date(type='date')
+      p End Date:
+        input#end_date(type='date')
+      button submit
   #EventList
     each event, event_id in events
       section#Events
@@ -23,3 +25,7 @@ block content
           p #{event.description}
           p #{event.start_date} #{event.start_time}
           p #{event.end_date} #{event.end_time}
+
+block append scripts
+  script(src='/js/jquery.validate.min.js')
+  script(src='/js/event_filter.js')
