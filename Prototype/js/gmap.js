@@ -7,8 +7,8 @@ Licence URI: http://www.os-templates.com/template-terms
 File: Google Maps Setup js
 */
 
-google.maps.visualRefresh = true; // Enable the visual refresh
 function initialize() {
+	google.maps.visualRefresh = true; // Enable the visual refresh
     // Set up your geolocation latitude and longtitude
     var latlang = new google.maps.LatLng(39.95661269999999,-75.18994409999999);
     var mapOptions = {
@@ -87,5 +87,5 @@ function initialize() {
     google.maps.event.addListener(marker, 'click', function() {
         infowindow.open(map, marker);
     });
+	google.maps.event.addDomListener(window, 'load', initialize);
 }
-google.maps.event.addDomListener(window, 'load', initialize);
