@@ -85,7 +85,7 @@ app.get('/events', function(req,res) {
             }
         }
 		// Only events that match criteria remain in the events object
-		res.render('Events', {"events": events});
+		res.render('Events', {"events": events, 'name': name, 'start_date': start_date, 'end_date': end_date});
 		res.end();
     });
 });
