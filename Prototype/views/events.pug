@@ -3,7 +3,10 @@ extends layout
 block content-title
   h2 Events
   section#Submit
-    a.button.special.big(href='/create_event') Submit Events
+    if session.user
+        a.button.special.big(href='/create_event') Submit Events
+    else
+        p
 
 block content
   section#filter
