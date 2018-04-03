@@ -3,6 +3,7 @@ var nodemailer = require('nodemailer');
 function send_mail(mailOptions) {
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
+		// password has been changed as of 4/2/18!
 		auth: {
 			user: 'drexeldragonevents@gmail.com',
 			pass: 'dragons12'
